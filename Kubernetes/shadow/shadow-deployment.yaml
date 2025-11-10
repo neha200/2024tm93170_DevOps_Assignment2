@@ -1,0 +1,136 @@
+# Production Deployment (receives real user traffic)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-production
+  namespace: aceest-fitness
+  labels:
+    app: aceest-fitness
+    environment: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aceest-fitness
+      environment: production
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+        environment: production
+    spec:
+      containers:
+      - name: aceest-fitness
+        image: nehaavalur/aceest-fitness:v1.0
+        ports:
+        - containerPort: 5000
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+# Shadow Deployment (receives copy of traffic for testing)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-shadow
+  namespace: aceest-fitness
+  labels:
+    app: aceest-fitness
+    environment: shadow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aceest-fitness
+      environment: shadow
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+        environment: shadow
+    spec:
+      containers:
+      - name: aceest-fitness
+        image: nehaavalur/aceest-fitness:v1.1
+        ports:
+        - containerPort: 5000
+        env:
+        - name: ENVIRONMENT
+          value: "shadow"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+# Production Service (only routes to production pods)
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-fitness-production-service
+  namespace: aceest-fitness
+spec:
+  type: LoadBalancer
+  selector:
+    app: aceest-fitness
+    environment: production
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 30084
+---
+# Shadow Service (for monitoring shadow deployment)
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-fitness-shadow-service
+  namespace: aceest-fitness
+spec:
+  type: ClusterIP
+  selector:
+    app: aceest-fitness
+    environment: shadow
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+---
+# Shadow Deployment Instructions:
+# Note: True shadow deployment requires a service mesh like Istio or Linkerd
+# to mirror traffic. This example shows the basic setup.
+#
+# With Istio:
+# 1. Install Istio in your cluster
+# 2. Use VirtualService to mirror traffic:
+#
+# apiVersion: networking.istio.io/v1beta1
+# kind: VirtualService
+# metadata:
+#   name: aceest-fitness-mirror
+# spec:
+#   hosts:
+#   - aceest-fitness-production-service
+#   http:
+#   - route:
+#     - destination:
+#         host: aceest-fitness-production-service
+#       weight: 100
+#     mirror:
+#       host: aceest-fitness-shadow-service
+#     mirrorPercentage:
+#       value: 100
+#
+# Without Istio:
+# 1. Deploy both production and shadow
+# 2. Monitor shadow logs and metrics
+# 3. Shadow receives no real traffic but can be tested separately

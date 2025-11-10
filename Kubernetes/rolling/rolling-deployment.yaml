@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-rolling
+  namespace: aceest-fitness
+  labels:
+    app: aceest-fitness
+    strategy: rolling
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # Maximum number of pods that can be created above desired replicas
+      maxUnavailable: 1  # Maximum number of pods that can be unavailable during update
+  selector:
+    matchLabels:
+      app: aceest-fitness
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+    spec:
+      containers:
+      - name: aceest-fitness
+        image: nehaavalur/aceest-fitness:v1.1
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DEPLOYMENT_STRATEGY
+          value: "rolling-update"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-fitness-rolling-service
+  namespace: aceest-fitness
+spec:
+  type: LoadBalancer
+  selector:
+    app: aceest-fitness
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 30083
+---
+# Rolling Update Instructions:
+# 1. Apply initial deployment: kubectl apply -f rolling-deployment.yaml
+# 2. Update image: kubectl set image deployment/aceest-fitness-rolling aceest-fitness=nehaavalur/aceest-fitness:v1.2
+# 3. Watch rollout: kubectl rollout status deployment/aceest-fitness-rolling
+# 4. Check history: kubectl rollout history deployment/aceest-fitness-rolling
+# 5. Rollback if needed: kubectl rollout undo deployment/aceest-fitness-rolling
+# 6. Rollback to specific revision: kubectl rollout undo deployment/aceest-fitness-rolling --to-revision=2
