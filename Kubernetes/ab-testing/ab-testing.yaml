@@ -1,0 +1,138 @@
+# Version A Deployment (50% of users)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-version-a
+  namespace: aceest-fitness
+  labels:
+    app: aceest-fitness
+    version: a
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: aceest-fitness
+      version: a
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+        version: a
+    spec:
+      containers:
+      - name: aceest-fitness
+        image: nehaavalur/aceest-fitness:v1.0
+        ports:
+        - containerPort: 5000
+        env:
+        - name: AB_VERSION
+          value: "A"
+        - name: FEATURE_FLAG
+          value: "original"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+# Version B Deployment (50% of users)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-version-b
+  namespace: aceest-fitness
+  labels:
+    app: aceest-fitness
+    version: b
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: aceest-fitness
+      version: b
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+        version: b
+    spec:
+      containers:
+      - name: aceest-fitness
+        image: nehaavalur/aceest-fitness:v1.1
+        ports:
+        - containerPort: 5000
+        env:
+        - name: AB_VERSION
+          value: "B"
+        - name: FEATURE_FLAG
+          value: "new-feature"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+# Service routing to both versions
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-fitness-ab-service
+  namespace: aceest-fitness
+spec:
+  type: LoadBalancer
+  selector:
+    app: aceest-fitness
+    # No version selector - routes to both A and B
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 30085
+  sessionAffinity: ClientIP  # Ensures same user gets same version
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800  # 3 hours
+---
+# A/B Testing Instructions:
+# Basic Setup (50/50 split):
+# 1. Deploy version A with 5 replicas
+# 2. Deploy version B with 5 replicas
+# 3. Service routes randomly to both (50/50)
+#
+# Adjust traffic split (e.g., 70/30):
+# kubectl scale deployment aceest-fitness-version-a --replicas=7
+# kubectl scale deployment aceest-fitness-version-b --replicas=3
+#
+# Advanced A/B Testing with Istio:
+# Use VirtualService with header-based routing:
+#
+# apiVersion: networking.istio.io/v1beta1
+# kind: VirtualService
+# metadata:
+#   name: aceest-fitness-ab
+# spec:
+#   hosts:
+#   - aceest-fitness-ab-service
+#   http:
+#   - match:
+#     - headers:
+#         user-type:
+#           exact: "premium"
+#     route:
+#     - destination:
+#         host: aceest-fitness-ab-service
+#         subset: version-b
+#   - route:
+#     - destination:
+#         host: aceest-fitness-ab-service
+#         subset: version-a
+#
+# Monitor metrics to determine winning version:
+# - Conversion rates
+# - User engagement
+# - Error rates
+# - Performance metrics
