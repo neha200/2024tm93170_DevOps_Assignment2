@@ -163,6 +163,7 @@ pip install -r requirements.txt
 - `POST /api/user` - 💾 Save user info
 - `GET /api/user` - 👤 Get user info
 - `GET /health` - ❤️ Health check
+![API calls](images/APIs.png)
 
 ### 🎨 Step 1.4: Create Frontend
 
@@ -190,8 +191,11 @@ python app.py
 
 **Test functionality:**
 1. ✅ Add a workout
+![Log Workouts](images/Log_Workouts.png)
 2. ✅ View summary
+![View Summary](images/View_Summary.png)
 3. ✅ Save user info
+![User Info](images/User_Info.png)
 4. ✅ Check calculations
 
 **Expected Output:**
@@ -231,33 +235,32 @@ python app.py
 
 ```bash
 # Build image (replace neha with your Docker Hub username)
-docker build -t neha/aceest-fitness:v1.0 .
+docker build -t nehaavalur/aceest-fitness:v1.0 .
 
 # Tag as latest
-docker tag neha/aceest-fitness:v1.0 neha/aceest-fitness:latest
+docker tag nehaavalur/aceest-fitness:v1.0 nehaavalur/aceest-fitness:latest
 
 # Verify image
-docker images | findstr aceest-fitness
+docker images | grep aceest-fitness
 ```
 
 **Expected Output:**
 
-```
-neha/aceest-fitness   v1.0    abc123def456   2 minutes ago   150MB
-neha/aceest-fitness   latest  abc123def456   2 minutes ago   150MB
-```
+![Docker Images](images/Docker_Images.png)
 
 ### 🚀 Step 2.4: Test Docker Container
 
 ```bash
 # Run container
-docker run -d -p 5000:5000 --name aceest-app neha/aceest-fitness:v1.0
+docker run -d -p 5000:5000 --name aceest-app nehaavalur/aceest-fitness:v1.0
 
 # Check if running
 docker ps
+![Running Docker Image](images/Running_Docker_Image.png)
 
 # Check logs
 docker logs aceest-app
+![Docker Logs](images/Docker_Logs.png)
 
 # Test in browser
 # 🌐 http://localhost:5000
@@ -275,12 +278,13 @@ docker login
 # Enter username and password
 
 # Push images
-docker push neha/aceest-fitness:v1.0
-docker push neha/aceest-fitness:latest
+docker push nehaavalur/aceest-fitness:v1.0
+docker push nehaavalur/aceest-fitness:latest
 
 # Verify on Docker Hub
 # 🌐 https://hub.docker.com/r/neha/aceest-fitness
 ```
+![Docker Hub Verification](images/Docker_Hub_Verification.png)
 
 ---
 
@@ -362,7 +366,7 @@ git add .
 git commit -m "Description of changes"
 
 # Push to GitHub
-git push origin main
+git push origin master
 
 # Create new version tag
 git tag -a v1.1 -m "Version 1.1: Description"
