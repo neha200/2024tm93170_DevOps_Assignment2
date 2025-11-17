@@ -256,11 +256,9 @@ docker run -d -p 5000:5000 --name aceest-app nehaavalur/aceest-fitness:v1.0
 
 # Check if running
 docker ps
-![Running Docker Image](images/Running_Docker_Image.png)
 
 # Check logs
 docker logs aceest-app
-![Docker Logs](images/Docker_Logs.png)
 
 # Test in browser
 # 🌐 http://localhost:5000
@@ -269,6 +267,9 @@ docker logs aceest-app
 docker stop aceest-app
 docker rm aceest-app
 ```
+![Running Docker Image](images/Running_Docker_Image.png)
+
+![Docker Logs](images/Docker_Logs.png)
 
 ### 📤 Step 2.5: Push to Docker Hub
 
@@ -392,10 +393,7 @@ kubectl get nodes
 
 **Expected Output:**
 
-```
-NAME       STATUS   ROLES           AGE   VERSION
-minikube   Ready    control-plane   30s   v1.28.0
-```
+![Minikube](images/Minikube.png)
 
 ### 🏷️ Step 4.2: Create Namespace
 
@@ -408,6 +406,7 @@ kubectl apply -f kubernetes/namespace.yaml
 # Verify
 kubectl get namespaces
 ```
+![Namespaces](images/Namespaces.png)
 
 ### 🔐 Step 4.3: Create Secrets
 
@@ -416,6 +415,9 @@ kubectl get namespaces
 **Generate base64 secret:**
 
 ```bash
+# macOS/Linux
+echo -n "your-secret-key-here" | base64
+
 # Windows PowerShell
 $text = "your-secret-key-here"
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($text)
@@ -443,6 +445,7 @@ kubectl get all -n aceest-fitness
 # Wait for pods to be ready
 kubectl wait --for=condition=ready pod -l app=aceest-fitness -n aceest-fitness --timeout=300s
 ```
+![Deployment status](images/Deployment_status.png)
 
 ### 🌐 Step 4.5: Access Application
 
@@ -456,6 +459,8 @@ kubectl port-forward -n aceest-fitness svc/aceest-fitness-service 8080:80
 # Access in browser
 # 🌐 http://localhost:8080
 ```
+![Minikube service](images/Minikube_Service.png)
+![Minikube Application](images/Minikube_Application.png)
 
 ### 📊 Step 4.6: Monitor Deployment
 
@@ -464,14 +469,20 @@ kubectl port-forward -n aceest-fitness svc/aceest-fitness-service 8080:80
 kubectl get pods -n aceest-fitness
 
 # Get pod details
-kubectl describe pod POD_NAME -n aceest-fitness
+kubectl describe pod aceest-fitness-deployment-559765f44b-cqqst -n aceest-fitness
 
 # View logs
-kubectl logs POD_NAME -n aceest-fitness
+kubectl logs aceest-fitness-deployment-559765f44b-cqqst -n aceest-fitness
 
 # Watch pods in real-time
 kubectl get pods -n aceest-fitness -w
 ```
+![Pods](images/Pods.png)
+
+![Pod Details 1](images/Pod_Details_1.png)
+![Pod Details 2](images/Pod_Details_2.png)
+
+![Pod Logs](images/Pod_Logs.png)
 
 ---
 
@@ -510,6 +521,12 @@ kubectl patch service aceest-fitness-bluegreen -n aceest-fitness -p '{"spec":{"s
 # Verify active version
 kubectl describe service aceest-fitness-bluegreen -n aceest-fitness
 ```
+
+![Blue Deployment](images/Blue_Deployment.png)
+
+![Changed Active Version to Green](images/Green_Deployment_Active.png)
+
+![Rollback to Blue](images/Rollback_To_Blue.png)
 
 **Benefits:**
 - ✅ Instant rollback
@@ -552,6 +569,7 @@ kubectl scale deployment aceest-fitness-stable --replicas=0 -n aceest-fitness
 kubectl scale deployment aceest-fitness-stable --replicas=10 -n aceest-fitness
 kubectl scale deployment aceest-fitness-canary --replicas=0 -n aceest-fitness
 ```
+![Track canary deployments](images/Track_Canary.png)
 
 **Benefits:**
 - ✅ Controlled risk
@@ -593,6 +611,11 @@ kubectl rollout undo deployment/aceest-fitness-rolling -n aceest-fitness
 # ↩️ Rollback to specific revision
 kubectl rollout undo deployment/aceest-fitness-rolling --to-revision=2 -n aceest-fitness
 ```
+![Rolling out deployments](images/Rolling_Out_Deployments.png)
+
+![Rolling Deployment Created](images/Rolling_Deployment_Created.png)
+
+![Rolling to revision 1](images/Rolling_Revisions.png)
 
 **Configuration:**
 
@@ -636,6 +659,9 @@ kubectl top pods -n aceest-fitness -l environment=shadow
 # ✅ If shadow performs well, promote to production
 kubectl set image deployment/aceest-fitness-production aceest-fitness=neha/aceest-fitness:v1.1 -n aceest-fitness
 ```
+![Shadow deployment](images/Shadow_Deployment.png)
+
+![Metrics](images/Metrics.png)
 
 > **Note:** Full shadow deployment requires service mesh like Istio for traffic mirroring.
 
@@ -650,13 +676,13 @@ kubectl set image deployment/aceest-fitness-production aceest-fitness=neha/acees
 
 **Concept:** Run two versions simultaneously. Split traffic based on criteria to compare performance.
 
-**File:** `kubernetes/ab-testing/ab-deployment.yaml`
+**File:** `kubernetes/ab-testing/ab-testing.yaml`
 
 **Implementation:**
 
 ```bash
 # Deploy both versions (50/50 split)
-kubectl apply -f kubernetes/ab-testing/ab-deployment.yaml
+kubectl apply -f kubernetes/ab-testing/ab-testing.yaml
 # 5 replicas version A + 5 replicas version B
 
 # Access service
@@ -677,7 +703,7 @@ kubectl logs -l version=b -n aceest-fitness
 kubectl scale deployment aceest-fitness-version-b --replicas=10 -n aceest-fitness
 kubectl scale deployment aceest-fitness-version-a --replicas=0 -n aceest-fitness
 ```
-
+![AB Deployment](images/AB_Deployment.png)
 **Benefits:**
 - ✅ Data-driven decisions
 - ✅ Compare user engagement
@@ -712,6 +738,7 @@ docker run -d -p 8080:8080 -p 50000:50000 --name jenkins \
 # Get initial admin password
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+![Jenkins](image.png)
 
 **Option 2: Windows Installer 🪟**
 
@@ -731,7 +758,7 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 3. **Create Admin User:**
    - 👤 Username: neha
-   - 🔐 Password: [secure password]
+   - 🔐 Password: 1ea46836215f44deb71aea70457ece94
    - 📝 Full name: Neha
    - 📧 Email: your.email@example.com
 

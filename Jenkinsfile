@@ -22,9 +22,9 @@ pipeline {
             steps {
                 echo 'Setting up Python environment...'
                 sh '''
-                    python3 --version
-                    pip3 install --upgrade pip
-                    pip3 install -r requirements.txt
+                    python --version
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
                 '''
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo 'Running Pytest unit tests...'
                 sh '''
-                    pip3 install pytest pytest-cov pytest-flask
+                    pip install pytest pytest-cov pytest-flask
                     pytest --junitxml=test-results.xml --cov=app --cov-report=xml --cov-report=html
                 '''
             }
