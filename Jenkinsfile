@@ -23,8 +23,18 @@ pipeline {
                 echo 'Setting up Python environment...'
                 sh '''
                     python3 --version
-                    python3 -m pip install --upgrade pip
-                    python3 -m pip install -r requirements.txt
+                    
+                    # Install pip if not present
+                    if ! command -v pip3 &> /dev/null; then
+                        echo "Installing pip..."
+                        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                        python3 get-pip.py --user
+                        rm get-pip.py
+                    fi
+                    
+                    # Install requirements
+                    python3 -m pip install --user --upgrade pip
+                    python3 -m pip install --user -r requirements.txt
                 '''
             }
         }
@@ -33,7 +43,7 @@ pipeline {
             steps {
                 echo 'Running Pytest unit tests...'
                 sh '''
-                    python3 -m pip install pytest pytest-cov pytest-flask
+                    python3 -m pip install --user pytest pytest-cov pytest-flask
                     python3 -m pytest --junitxml=test-results.xml --cov=app --cov-report=xml --cov-report=html
                 '''
             }
