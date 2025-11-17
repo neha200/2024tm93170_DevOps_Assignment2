@@ -23,11 +23,7 @@ pipeline {
                 echo 'Setting up Python virtual environment...'
                 sh '''
                     python3 --version
-                    
-                    # Create virtual environment
                     python3 -m venv venv
-                    
-                    # Activate and install dependencies
                     . venv/bin/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
