@@ -1,0 +1,1233 @@
+Started by an SCM change
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/neha200/2024tm93170_DevOps_Assignment2.git into /var/jenkins_home/workspace/ACEest-Fitness-Pipeline@script/5fa662a0f491614fb7c4e436976081407a320259162220311c17610726bc9336 to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/ACEest-Fitness-Pipeline@script/5fa662a0f491614fb7c4e436976081407a320259162220311c17610726bc9336/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/neha200/2024tm93170_DevOps_Assignment2.git # timeout=10
+Fetching upstream changes from https://github.com/neha200/2024tm93170_DevOps_Assignment2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/neha200/2024tm93170_DevOps_Assignment2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/master
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 (origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 # timeout=10
+Commit message: "Add --insecure-skip-tls-verify for kubectl commands from Jenkins container"
+ > git rev-list --no-walk 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/ACEest-Fitness-Pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/neha200/2024tm93170_DevOps_Assignment2.git
+ > git init /var/jenkins_home/workspace/ACEest-Fitness-Pipeline # timeout=10
+Fetching upstream changes from https://github.com/neha200/2024tm93170_DevOps_Assignment2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/neha200/2024tm93170_DevOps_Assignment2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/neha200/2024tm93170_DevOps_Assignment2.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/master
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 (origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 # timeout=10
+Commit message: "Add --insecure-skip-tls-verify for kubectl commands from Jenkins container"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $KUBECONFIG
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] echo
+Checking out code from GitHub...
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/ACEest-Fitness-Pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/neha200/2024tm93170_DevOps_Assignment2.git # timeout=10
+Fetching upstream changes from https://github.com/neha200/2024tm93170_DevOps_Assignment2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/neha200/2024tm93170_DevOps_Assignment2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/master
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 (origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50 # timeout=10
+Commit message: "Add --insecure-skip-tls-verify for kubectl commands from Jenkins container"
+[Pipeline] sh
++ git log -1
+commit 9ca843c3c75cf6689784dfc42d6b45e9d09dfe50
+Author: neha200 <neha.avalur@gmail.com>
+Date:   Mon Nov 17 18:01:09 2025 +0530
+
+    Add --insecure-skip-tls-verify for kubectl commands from Jenkins container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Environment Setup)
+[Pipeline] echo
+Setting up Python virtual environment...
+[Pipeline] sh
++ python3 --version
+Python 3.13.5
++ python3 -m venv venv
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/ACEest-Fitness-Pipeline/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/ACEest-Fitness-Pipeline/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$ 
++ PS1=(venv) $ 
++ export PS1
++ hash -r
++ pip install --upgrade pip
+Requirement already satisfied: pip in ./venv/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-25.3-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-25.3-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-25.3
++ pip install -r requirements.txt
+Collecting Flask==3.0.0 (from -r requirements.txt (line 1))
+  Using cached flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting pytest==7.4.3 (from -r requirements.txt (line 2))
+  Using cached pytest-7.4.3-py3-none-any.whl.metadata (7.9 kB)
+Collecting pytest-flask==1.3.0 (from -r requirements.txt (line 3))
+  Using cached pytest_flask-1.3.0-py3-none-any.whl.metadata (14 kB)
+Collecting pytest-cov==4.1.0 (from -r requirements.txt (line 4))
+  Using cached pytest_cov-4.1.0-py3-none-any.whl.metadata (26 kB)
+Collecting Werkzeug==3.0.1 (from -r requirements.txt (line 5))
+  Using cached werkzeug-3.0.1-py3-none-any.whl.metadata (4.1 kB)
+Collecting gunicorn==21.2.0 (from -r requirements.txt (line 6))
+  Using cached gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting requests==2.31.0 (from -r requirements.txt (line 7))
+  Using cached requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting Jinja2>=3.1.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting itsdangerous>=2.1.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Using cached itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting click>=8.1.3 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting blinker>=1.6.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Using cached blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting iniconfig (from pytest==7.4.3->-r requirements.txt (line 2))
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging (from pytest==7.4.3->-r requirements.txt (line 2))
+  Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pluggy<2.0,>=0.12 (from pytest==7.4.3->-r requirements.txt (line 2))
+  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting coverage>=5.2.1 (from coverage[toml]>=5.2.1->pytest-cov==4.1.0->-r requirements.txt (line 4))
+  Using cached coverage-7.11.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (9.1 kB)
+Collecting MarkupSafe>=2.1.1 (from Werkzeug==3.0.1->-r requirements.txt (line 5))
+  Using cached markupsafe-3.0.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 7))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests==2.31.0->-r requirements.txt (line 7))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 7))
+  Using cached urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 7))
+  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Using cached flask-3.0.0-py3-none-any.whl (99 kB)
+Using cached pytest-7.4.3-py3-none-any.whl (325 kB)
+Using cached pytest_flask-1.3.0-py3-none-any.whl (13 kB)
+Using cached pytest_cov-4.1.0-py3-none-any.whl (21 kB)
+Using cached werkzeug-3.0.1-py3-none-any.whl (226 kB)
+Using cached gunicorn-21.2.0-py3-none-any.whl (80 kB)
+Using cached requests-2.31.0-py3-none-any.whl (62 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (147 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
+Using cached blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
+Using cached click-8.3.1-py3-none-any.whl (108 kB)
+Using cached coverage-7.11.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (251 kB)
+Using cached itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (24 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Using cached packaging-25.0-py3-none-any.whl (66 kB)
+Installing collected packages: urllib3, pluggy, packaging, MarkupSafe, itsdangerous, iniconfig, idna, coverage, click, charset-normalizer, certifi, blinker, Werkzeug, requests, pytest, Jinja2, gunicorn, pytest-cov, Flask, pytest-flask
+
+Successfully installed Flask-3.0.0 Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.0.1 blinker-1.9.0 certifi-2025.11.12 charset-normalizer-3.4.4 click-8.3.1 coverage-7.11.3 gunicorn-21.2.0 idna-3.11 iniconfig-2.3.0 itsdangerous-2.2.0 packaging-25.0 pluggy-1.6.0 pytest-7.4.3 pytest-cov-4.1.0 pytest-flask-1.3.0 requests-2.31.0 urllib3-2.5.0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit Tests)
+[Pipeline] echo
+Running Pytest unit tests...
+[Pipeline] sh
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/ACEest-Fitness-Pipeline/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/ACEest-Fitness-Pipeline/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$ 
++ PS1=(venv) $ 
++ export PS1
++ hash -r
++ pip install pytest pytest-cov pytest-flask
+Requirement already satisfied: pytest in ./venv/lib/python3.13/site-packages (7.4.3)
+Requirement already satisfied: pytest-cov in ./venv/lib/python3.13/site-packages (4.1.0)
+Requirement already satisfied: pytest-flask in ./venv/lib/python3.13/site-packages (1.3.0)
+Requirement already satisfied: iniconfig in ./venv/lib/python3.13/site-packages (from pytest) (2.3.0)
+Requirement already satisfied: packaging in ./venv/lib/python3.13/site-packages (from pytest) (25.0)
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./venv/lib/python3.13/site-packages (from pytest) (1.6.0)
+Requirement already satisfied: coverage>=5.2.1 in ./venv/lib/python3.13/site-packages (from coverage[toml]>=5.2.1->pytest-cov) (7.11.3)
+Requirement already satisfied: Flask in ./venv/lib/python3.13/site-packages (from pytest-flask) (3.0.0)
+Requirement already satisfied: Werkzeug in ./venv/lib/python3.13/site-packages (from pytest-flask) (3.0.1)
+Requirement already satisfied: Jinja2>=3.1.2 in ./venv/lib/python3.13/site-packages (from Flask->pytest-flask) (3.1.6)
+Requirement already satisfied: itsdangerous>=2.1.2 in ./venv/lib/python3.13/site-packages (from Flask->pytest-flask) (2.2.0)
+Requirement already satisfied: click>=8.1.3 in ./venv/lib/python3.13/site-packages (from Flask->pytest-flask) (8.3.1)
+Requirement already satisfied: blinker>=1.6.2 in ./venv/lib/python3.13/site-packages (from Flask->pytest-flask) (1.9.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.13/site-packages (from Jinja2>=3.1.2->Flask->pytest-flask) (3.0.3)
++ pytest --junitxml=test-results.xml --cov=app --cov-report=xml --cov-report=html
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-7.4.3, pluggy-1.6.0 -- /var/jenkins_home/workspace/ACEest-Fitness-Pipeline/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /var/jenkins_home/workspace/ACEest-Fitness-Pipeline
+configfile: pytest.ini
+plugins: flask-1.3.0, cov-4.1.0
+collecting ... collected 19 items
+
+Tests/test_app.py::TestHomeRoute::test_home_page_loads PASSED            [  5%]
+Tests/test_app.py::TestHomeRoute::test_home_page_version PASSED          [ 10%]
+Tests/test_app.py::TestHealthCheck::test_health_endpoint PASSED          [ 15%]
+Tests/test_app.py::TestWorkoutAPI::test_get_empty_workouts PASSED        [ 21%]
+Tests/test_app.py::TestWorkoutAPI::test_add_workout_success PASSED       [ 26%]
+Tests/test_app.py::TestWorkoutAPI::test_add_workout_missing_fields PASSED [ 31%]
+Tests/test_app.py::TestWorkoutAPI::test_add_workout_invalid_duration PASSED [ 36%]
+Tests/test_app.py::TestWorkoutAPI::test_add_workout_negative_duration PASSED [ 42%]
+Tests/test_app.py::TestWorkoutAPI::test_add_workout_zero_duration PASSED [ 47%]
+Tests/test_app.py::TestWorkoutAPI::test_get_workouts_after_adding PASSED [ 52%]
+Tests/test_app.py::TestSummaryAPI::test_summary_empty PASSED             [ 57%]
+Tests/test_app.py::TestSummaryAPI::test_summary_with_workouts PASSED     [ 63%]
+Tests/test_app.py::TestUserAPI::test_get_empty_user_info PASSED          [ 68%]
+Tests/test_app.py::TestUserAPI::test_save_user_info_success PASSED       [ 73%]
+Tests/test_app.py::TestUserAPI::test_save_user_info_bmi_calculation PASSED [ 78%]
+Tests/test_app.py::TestUserAPI::test_save_user_info_missing_fields PASSED [ 84%]
+Tests/test_app.py::TestUserAPI::test_save_user_info_invalid_age PASSED   [ 89%]
+Tests/test_app.py::TestUserAPI::test_get_user_info_after_saving PASSED   [ 94%]
+Tests/test_app.py::TestIntegration::test_complete_workout_flow PASSED    [100%]
+
+- generated xml file: /var/jenkins_home/workspace/ACEest-Fitness-Pipeline/test-results.xml -
+
+---------- coverage: platform linux, python 3.13.5-final-0 -----------
+Coverage HTML written to dir htmlcov
+Coverage XML written to file coverage.xml
+
+======================== 19 passed, 1 warning in 0.12s =========================
+Post stage
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] publishHTML
+[htmlpublisher] Archiving HTML reports...
+[htmlpublisher] Archiving at BUILD level /var/jenkins_home/workspace/ACEest-Fitness-Pipeline/htmlcov to Coverage_20Report
+[htmlpublisher] Copying recursive using current thread
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Code Quality Analysis)
+[Pipeline] echo
+Running SonarQube analysis...
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarQube
+[Pipeline] {
+[Pipeline] sh
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/bin/sonar-scanner -Dsonar.projectKey=aceest-fitness -Dsonar.projectName=ACEest-Fitness -Dsonar.projectVersion=1.0 -Dsonar.sources=. -Dsonar.exclusions=tests/**,venv/**,static/**,templates/** -Dsonar.python.coverage.reportPaths=coverage.xml -Dsonar.python.version=3.9
+13:22:01.889 INFO  Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/conf/sonar-scanner.properties
+13:22:01.890 INFO  Project root configuration file: /var/jenkins_home/workspace/ACEest-Fitness-Pipeline/sonar-project.properties
+13:22:01.900 INFO  SonarScanner CLI 7.3.0.5189
+13:22:01.901 INFO  Linux 6.11.11-linuxkit aarch64
+13:22:03.350 INFO  Communicating with SonarQube Server 9.9.8.100196
+13:22:03.537 INFO  Load global settings
+13:22:03.588 INFO  Load global settings (done) | time=52ms
+13:22:03.589 INFO  Server id: 147B411E-AZqRnOSu2JYoEX2It5mU
+13:22:03.591 INFO  User cache: /var/jenkins_home/.sonar/cache
+13:22:03.593 INFO  Load/download plugins
+13:22:03.594 INFO  Load plugins index
+13:22:03.609 INFO  Load plugins index (done) | time=15ms
+13:22:03.640 INFO  Load/download plugins (done) | time=47ms
+13:22:03.811 INFO  Process project properties
+13:22:03.813 INFO  Process project properties (done) | time=2ms
+13:22:03.815 INFO  Execute project builders
+13:22:03.815 INFO  Execute project builders (done) | time=1ms
+13:22:03.816 INFO  Project key: aceest-fitness
+13:22:03.816 INFO  Base dir: /var/jenkins_home/workspace/ACEest-Fitness-Pipeline
+13:22:03.816 INFO  Working dir: /var/jenkins_home/workspace/ACEest-Fitness-Pipeline/.scannerwork
+13:22:03.819 INFO  Load project settings for component key: 'aceest-fitness'
+13:22:03.826 INFO  Load project settings for component key: 'aceest-fitness' (done) | time=6ms
+13:22:03.881 INFO  Auto-configuring with CI 'Jenkins'
+13:22:03.882 INFO  Load quality profiles
+13:22:03.896 INFO  Load quality profiles (done) | time=14ms
+13:22:03.901 INFO  Load active rules
+13:22:04.515 INFO  Load active rules (done) | time=614ms
+13:22:04.517 INFO  Load analysis cache
+13:22:04.527 INFO  Load analysis cache | time=10ms
+13:22:04.545 INFO  Load project repositories
+13:22:04.551 INFO  Load project repositories (done) | time=6ms
+13:22:04.564 INFO  Indexing files...
+13:22:04.564 INFO  Project configuration:
+13:22:04.564 INFO    Excluded sources: tests/**, venv/**, static/**, templates/**
+13:22:04.667 INFO  55 files indexed
+13:22:04.667 INFO  3723 files ignored because of inclusion/exclusion patterns
+13:22:04.667 INFO  9 files ignored because of scm ignore settings
+13:22:04.668 INFO  Quality profile for py: Sonar way
+13:22:04.668 INFO  Quality profile for xml: Sonar way
+13:22:04.668 INFO  Quality profile for yaml: Sonar way
+13:22:04.668 INFO  ------------- Run sensors on module ACEest-Fitness
+13:22:04.702 INFO  Load metrics repository
+13:22:04.712 INFO  Load metrics repository (done) | time=10ms
+13:22:05.323 INFO  Sensor Python Sensor [python]
+13:22:05.329 INFO  Starting global symbols computation
+13:22:05.331 INFO  2 source files to be analyzed
+13:22:05.467 INFO  2/2 source files have been analyzed
+13:22:05.478 INFO  Starting rules execution
+13:22:05.478 INFO  2 source files to be analyzed
+13:22:05.620 INFO  2/2 source files have been analyzed
+13:22:05.620 INFO  The Python analyzer was able to leverage cached data from previous analyses for 0 out of 2 files. These files were not parsed.
+13:22:05.620 INFO  Sensor Python Sensor [python] (done) | time=297ms
+13:22:05.620 INFO  Sensor Cobertura Sensor for Python coverage [python]
+13:22:05.629 INFO  Python test coverage
+13:22:05.630 INFO  Parsing report '/var/jenkins_home/workspace/ACEest-Fitness-Pipeline/coverage.xml'
+13:22:05.651 INFO  Sensor Cobertura Sensor for Python coverage [python] (done) | time=31ms
+13:22:05.651 INFO  Sensor PythonXUnitSensor [python]
+13:22:05.659 INFO  Processing report '/var/jenkins_home/workspace/ACEest-Fitness-Pipeline/test-results.xml'
+13:22:05.665 INFO  Sensor PythonXUnitSensor [python] (done) | time=14ms
+13:22:05.666 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+13:22:05.666 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+13:22:05.666 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+13:22:05.666 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=0ms
+13:22:05.666 INFO  Sensor IaC CloudFormation Sensor [iac]
+13:22:05.673 INFO  0 source files to be analyzed
+13:22:05.677 INFO  0/0 source files have been analyzed
+13:22:05.677 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=11ms
+13:22:05.677 INFO  Sensor IaC Kubernetes Sensor [iac]
+13:22:05.679 INFO  10 source files to be analyzed
+13:22:05.715 INFO  10/10 source files have been analyzed
+13:22:05.715 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=38ms
+13:22:05.715 INFO  Sensor JavaScript inside YAML analysis [javascript]
+13:22:05.717 INFO  No input files found for analysis
+13:22:05.718 INFO  Hit the cache for 0 out of 0
+13:22:05.718 INFO  Miss the cache for 0 out of 0
+13:22:05.718 INFO  Sensor JavaScript inside YAML analysis [javascript] (done) | time=3ms
+13:22:05.718 INFO  Sensor CSS Rules [javascript]
+13:22:05.718 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+13:22:05.718 INFO  Sensor CSS Rules [javascript] (done) | time=0ms
+13:22:05.718 INFO  Sensor C# Project Type Information [csharp]
+13:22:05.718 INFO  Sensor C# Project Type Information [csharp] (done) | time=0ms
+13:22:05.719 INFO  Sensor C# Analysis Log [csharp]
+13:22:05.725 INFO  Sensor C# Analysis Log [csharp] (done) | time=6ms
+13:22:05.725 INFO  Sensor C# Properties [csharp]
+13:22:05.725 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+13:22:05.725 INFO  Sensor HTML [web]
+13:22:05.726 INFO  Sensor HTML [web] (done) | time=1ms
+13:22:05.726 INFO  Sensor XML Sensor [xml]
+13:22:05.727 INFO  2 source files to be analyzed
+13:22:05.785 INFO  2/2 source files have been analyzed
+13:22:05.785 INFO  Sensor XML Sensor [xml] (done) | time=59ms
+13:22:05.785 INFO  Sensor TextAndSecretsSensor [text]
+13:22:05.788 INFO  19 source files to be analyzed
+13:22:05.801 INFO  19/19 source files have been analyzed
+13:22:05.801 INFO  Sensor TextAndSecretsSensor [text] (done) | time=16ms
+13:22:05.801 INFO  Sensor VB.NET Project Type Information [vbnet]
+13:22:05.801 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+13:22:05.801 INFO  Sensor VB.NET Analysis Log [vbnet]
+13:22:05.807 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=6ms
+13:22:05.807 INFO  Sensor VB.NET Properties [vbnet]
+13:22:05.807 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+13:22:05.807 INFO  Sensor IaC Docker Sensor [iac]
+13:22:05.808 INFO  1 source file to be analyzed
+13:22:05.833 INFO  1/1 source file has been analyzed
+13:22:05.833 INFO  Sensor IaC Docker Sensor [iac] (done) | time=26ms
+13:22:05.835 INFO  ------------- Run sensors on project
+13:22:05.852 INFO  Sensor Analysis Warnings import [csharp]
+13:22:05.852 INFO  Sensor Analysis Warnings import [csharp] (done) | time=0ms
+13:22:05.852 INFO  Sensor Zero Coverage Sensor
+13:22:05.853 INFO  Sensor Zero Coverage Sensor (done) | time=1ms
+13:22:05.855 INFO  SCM Publisher SCM provider for this project is: git
+13:22:05.856 INFO  SCM Publisher 2 source files to be analyzed
+13:22:05.869 INFO  SCM Publisher 0/2 source files have been analyzed (done) | time=13ms
+13:22:05.869 WARN  Missing blame information for the following files:
+13:22:05.869 WARN    * coverage.xml
+13:22:05.869 WARN    * test-results.xml
+13:22:05.869 WARN  This may lead to missing/broken features in SonarQube
+13:22:05.871 INFO  CPD Executor Calculating CPD for 2 files
+13:22:05.874 INFO  CPD Executor CPD calculation finished (done) | time=3ms
+13:22:05.896 INFO  Analysis report generated in 20ms, dir size=217.6 kB
+13:22:05.906 INFO  Analysis report compressed in 10ms, zip size=66.4 kB
+13:22:05.962 INFO  Analysis report uploaded in 56ms
+13:22:05.963 INFO  ------------- Check Quality Gate status
+13:22:05.963 INFO  Waiting for the analysis report to be processed (max 300s)
+13:22:10.998 INFO  QUALITY GATE STATUS: PASSED - View details on http://sonar:9000/dashboard?id=aceest-fitness
+13:22:11.003 INFO  Analysis total time: 7.329 s
+13:22:11.004 INFO  EXECUTION SUCCESS
+13:22:11.004 INFO  Total time: 9.132s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+[Pipeline] echo
+Checking SonarQube Quality Gate...
+[Pipeline] timeout
+Timeout set to expire in 5 min 0 sec
+[Pipeline] {
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AZqR-tPY2JYoEX2IuDf5' on server 'SonarQube'
+SonarQube task 'AZqR-tPY2JYoEX2IuDf5' status is 'SUCCESS'
+SonarQube task 'AZqR-tPY2JYoEX2IuDf5' completed. Quality gate is 'OK'
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] echo
+Building Docker image: nehaavalur/aceest-fitness:35
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t nehaavalur/aceest-fitness:35 .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.07kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.9-slim
+#2 DONE 1.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 477B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b
+#4 resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 9.38MB 0.1s done
+#5 DONE 0.1s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] RUN apt-get update && apt-get install -y --no-install-recommends     gcc     curl     && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [4/6] COPY . /app/
+#8 DONE 0.1s
+
+#9 [5/6] RUN pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r requirements.txt
+#9 0.810 Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (23.0.1)
+#9 1.033 Collecting pip
+#9 1.242   Downloading pip-25.3-py3-none-any.whl (1.8 MB)
+#9 1.581      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 5.3 MB/s eta 0:00:00
+#9 1.619 Installing collected packages: pip
+#9 1.619   Attempting uninstall: pip
+#9 1.620     Found existing installation: pip 23.0.1
+#9 1.670     Uninstalling pip-23.0.1:
+#9 1.740       Successfully uninstalled pip-23.0.1
+#9 2.053 Successfully installed pip-25.3
+#9 2.053 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#9 2.805 Collecting Flask==3.0.0 (from -r requirements.txt (line 1))
+#9 2.974   Downloading flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+#9 3.100 Collecting pytest==7.4.3 (from -r requirements.txt (line 2))
+#9 3.153   Downloading pytest-7.4.3-py3-none-any.whl.metadata (7.9 kB)
+#9 3.215 Collecting pytest-flask==1.3.0 (from -r requirements.txt (line 3))
+#9 3.268   Downloading pytest_flask-1.3.0-py3-none-any.whl.metadata (14 kB)
+#9 3.334 Collecting pytest-cov==4.1.0 (from -r requirements.txt (line 4))
+#9 3.387   Downloading pytest_cov-4.1.0-py3-none-any.whl.metadata (26 kB)
+#9 3.472 Collecting Werkzeug==3.0.1 (from -r requirements.txt (line 5))
+#9 3.559   Downloading werkzeug-3.0.1-py3-none-any.whl.metadata (4.1 kB)
+#9 3.634 Collecting gunicorn==21.2.0 (from -r requirements.txt (line 6))
+#9 3.693   Downloading gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+#9 3.771 Collecting requests==2.31.0 (from -r requirements.txt (line 7))
+#9 3.825   Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+#9 3.890 Collecting Jinja2>=3.1.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+#9 3.945   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#9 4.002 Collecting itsdangerous>=2.1.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+#9 4.060   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#9 4.127 Collecting click>=8.1.3 (from Flask==3.0.0->-r requirements.txt (line 1))
+#9 4.182   Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+#9 4.244 Collecting blinker>=1.6.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+#9 4.296   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+#9 4.380 Collecting importlib-metadata>=3.6.0 (from Flask==3.0.0->-r requirements.txt (line 1))
+#9 4.433   Downloading importlib_metadata-8.7.0-py3-none-any.whl.metadata (4.8 kB)
+#9 4.488 Collecting iniconfig (from pytest==7.4.3->-r requirements.txt (line 2))
+#9 4.542   Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+#9 4.608 Collecting packaging (from pytest==7.4.3->-r requirements.txt (line 2))
+#9 4.663   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#9 4.725 Collecting pluggy<2.0,>=0.12 (from pytest==7.4.3->-r requirements.txt (line 2))
+#9 4.781   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+#9 4.848 Collecting exceptiongroup>=1.0.0rc8 (from pytest==7.4.3->-r requirements.txt (line 2))
+#9 4.904   Downloading exceptiongroup-1.3.0-py3-none-any.whl.metadata (6.7 kB)
+#9 4.967 Collecting tomli>=1.0.0 (from pytest==7.4.3->-r requirements.txt (line 2))
+#9 5.020   Downloading tomli-2.3.0-py3-none-any.whl.metadata (10 kB)
+#9 5.430 Collecting coverage>=5.2.1 (from coverage[toml]>=5.2.1->pytest-cov==4.1.0->-r requirements.txt (line 4))
+#9 5.483   Downloading coverage-7.10.7-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (8.9 kB)
+#9 5.571 Collecting MarkupSafe>=2.1.1 (from Werkzeug==3.0.1->-r requirements.txt (line 5))
+#9 5.624   Downloading markupsafe-3.0.3-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+#9 5.724 Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 7))
+#9 5.777   Downloading charset_normalizer-3.4.4-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (37 kB)
+#9 5.846 Collecting idna<4,>=2.5 (from requests==2.31.0->-r requirements.txt (line 7))
+#9 5.898   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+#9 5.965 Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 7))
+#9 6.021   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#9 6.087 Collecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 7))
+#9 6.139   Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+#9 6.206 Collecting typing-extensions>=4.6.0 (from exceptiongroup>=1.0.0rc8->pytest==7.4.3->-r requirements.txt (line 2))
+#9 6.259   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#9 6.318 Collecting zipp>=3.20 (from importlib-metadata>=3.6.0->Flask==3.0.0->-r requirements.txt (line 1))
+#9 6.371   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+#9 6.432 Downloading flask-3.0.0-py3-none-any.whl (99 kB)
+#9 6.549 Downloading pytest-7.4.3-py3-none-any.whl (325 kB)
+#9 6.669 Downloading pytest_flask-1.3.0-py3-none-any.whl (13 kB)
+#9 6.729 Downloading pytest_cov-4.1.0-py3-none-any.whl (21 kB)
+#9 6.786 Downloading werkzeug-3.0.1-py3-none-any.whl (226 kB)
+#9 6.852 Downloading gunicorn-21.2.0-py3-none-any.whl (80 kB)
+#9 6.910 Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+#9 6.967 Downloading charset_normalizer-3.4.4-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (149 kB)
+#9 7.028 Downloading idna-3.11-py3-none-any.whl (71 kB)
+#9 7.087 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+#9 7.144 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#9 7.208 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#9 7.265 Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+#9 7.326 Downloading click-8.1.8-py3-none-any.whl (98 kB)
+#9 7.390 Downloading coverage-7.10.7-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (248 kB)
+#9 7.467 Downloading exceptiongroup-1.3.0-py3-none-any.whl (16 kB)
+#9 7.526 Downloading importlib_metadata-8.7.0-py3-none-any.whl (27 kB)
+#9 7.588 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#9 7.651 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#9 7.723 Downloading markupsafe-3.0.3-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (21 kB)
+#9 7.778 Downloading tomli-2.3.0-py3-none-any.whl (14 kB)
+#9 7.838 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#9 7.902 Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+#9 7.958 Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+#9 8.022 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#9 8.067 Installing collected packages: zipp, urllib3, typing-extensions, tomli, pluggy, packaging, MarkupSafe, itsdangerous, iniconfig, idna, coverage, click, charset-normalizer, certifi, blinker, Werkzeug, requests, Jinja2, importlib-metadata, gunicorn, exceptiongroup, pytest, Flask, pytest-flask, pytest-cov
+#9 8.510 
+#9 8.512 Successfully installed Flask-3.0.0 Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.0.1 blinker-1.9.0 certifi-2025.11.12 charset-normalizer-3.4.4 click-8.1.8 coverage-7.10.7 exceptiongroup-1.3.0 gunicorn-21.2.0 idna-3.11 importlib-metadata-8.7.0 iniconfig-2.1.0 itsdangerous-2.2.0 packaging-25.0 pluggy-1.6.0 pytest-7.4.3 pytest-cov-4.1.0 pytest-flask-1.3.0 requests-2.31.0 tomli-2.3.0 typing-extensions-4.15.0 urllib3-2.5.0 zipp-3.23.0
+#9 8.512 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 DONE 8.8s
+
+#10 [6/6] RUN useradd -m -u 1000 appuser &&     chown -R appuser:appuser /app
+#10 DONE 0.2s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.5s done
+#11 exporting manifest sha256:505908654569e41717f3f856142b297b2b5c44605a1bd22a00ad43a6f14289cb
+#11 exporting manifest sha256:505908654569e41717f3f856142b297b2b5c44605a1bd22a00ad43a6f14289cb done
+#11 exporting config sha256:0b4697cab91168404628bde1356c152cc287cc8541f426f8344cb14f8248781e done
+#11 exporting attestation manifest sha256:09f062d481bd6d3c2c149af2c6ec368fd324121e55c3d6d976eee62d631f173a done
+#11 exporting manifest list sha256:178cebd6a944eb8726679c5960751b385751813971a04697ceb615d075b7b24e done
+#11 naming to docker.io/nehaavalur/aceest-fitness:35 done
+#11 unpacking to docker.io/nehaavalur/aceest-fitness:35
+#11 unpacking to docker.io/nehaavalur/aceest-fitness:35 0.2s done
+#11 DONE 0.7s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t nehaavalur/aceest-fitness:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.07kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.9-slim
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 477B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b
+#4 resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 3.02kB done
+#5 DONE 0.0s
+
+#6 [4/6] COPY . /app/
+#6 CACHED
+
+#7 [5/6] RUN pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r requirements.txt
+#7 CACHED
+
+#8 [2/6] WORKDIR /app
+#8 CACHED
+
+#9 [3/6] RUN apt-get update && apt-get install -y --no-install-recommends     gcc     curl     && rm -rf /var/lib/apt/lists/*
+#9 CACHED
+
+#10 [6/6] RUN useradd -m -u 1000 appuser &&     chown -R appuser:appuser /app
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:505908654569e41717f3f856142b297b2b5c44605a1bd22a00ad43a6f14289cb done
+#11 exporting config sha256:0b4697cab91168404628bde1356c152cc287cc8541f426f8344cb14f8248781e done
+#11 exporting attestation manifest sha256:df63fb36aa8b6cf5b2394766ea45ef062729be860bb44b7be459721de6b7abd4 done
+#11 exporting manifest list sha256:b5e4ecde7fa6021ce17c1af16f49959126358b6a6fee0af195057725dc01ce4e done
+#11 naming to docker.io/nehaavalur/aceest-fitness:latest done
+#11 unpacking to docker.io/nehaavalur/aceest-fitness:latest done
+#11 DONE 0.0s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push to Docker Hub)
+[Pipeline] echo
+Pushing Docker image to Docker Hub...
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withDockerRegistry
+$ docker login -u nehaavalur -p ******** https://registry.hub.docker.com
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+
+WARNING! Your credentials are stored unencrypted in '/var/jenkins_home/workspace/ACEest-Fitness-Pipeline@tmp/e024dfac-965d-4388-904d-246ef73bee5d/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker tag nehaavalur/aceest-fitness:35 registry.hub.docker.com/nehaavalur/aceest-fitness:35
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker push registry.hub.docker.com/nehaavalur/aceest-fitness:35
+The push refers to repository [registry.hub.docker.com/nehaavalur/aceest-fitness]
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+8d78233560c1: Layer already exists
+ebfe7d4fa0c5: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+f20b28e09206: Layer already exists
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+c23f4b503473: Waiting
+d5186a3fa30f: Waiting
+ebfe7d4fa0c5: Waiting
+055ce3ad02cd: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Waiting
+055ce3ad02cd: Waiting
+a16e55119267: Waiting
+c88ae95eb8f0: Waiting
+479b8ad8bcc3: Layer already exists
+d6712a83977d: Waiting
+c23f4b503473: Layer already exists
+d5186a3fa30f: Waiting
+ebfe7d4fa0c5: Layer already exists
+055ce3ad02cd: Waiting
+a16e55119267: Layer already exists
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+d5186a3fa30f: Waiting
+055ce3ad02cd: Waiting
+d6712a83977d: Waiting
+d5186a3fa30f: Waiting
+055ce3ad02cd: Waiting
+d6712a83977d: Waiting
+d5186a3fa30f: Waiting
+055ce3ad02cd: Pushed
+c88ae95eb8f0: Pushed
+d6712a83977d: Pushed
+d5186a3fa30f: Pushed
+35: digest: sha256:178cebd6a944eb8726679c5960751b385751813971a04697ceb615d075b7b24e size: 856
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker tag nehaavalur/aceest-fitness:latest registry.hub.docker.com/nehaavalur/aceest-fitness:latest
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker push registry.hub.docker.com/nehaavalur/aceest-fitness:latest
+The push refers to repository [registry.hub.docker.com/nehaavalur/aceest-fitness]
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Waiting
+c23f4b503473: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+ebfe7d4fa0c5: Layer already exists
+c23f4b503473: Layer already exists
+f20b28e09206: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+f20b28e09206: Layer already exists
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+a16e55119267: Waiting
+8d78233560c1: Waiting
+c88ae95eb8f0: Waiting
+d6712a83977d: Waiting
+a4091ec492ef: Waiting
+d5186a3fa30f: Waiting
+479b8ad8bcc3: Waiting
+d6712a83977d: Layer already exists
+a4091ec492ef: Waiting
+d5186a3fa30f: Layer already exists
+479b8ad8bcc3: Layer already exists
+a16e55119267: Layer already exists
+8d78233560c1: Layer already exists
+c88ae95eb8f0: Layer already exists
+a4091ec492ef: Waiting
+a4091ec492ef: Waiting
+a4091ec492ef: Waiting
+a4091ec492ef: Pushed
+latest: digest: sha256:b5e4ecde7fa6021ce17c1af16f49959126358b6a6fee0af195057725dc01ce4e size: 856
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Kubernetes)
+[Pipeline] echo
+Deploying to Kubernetes cluster...
+[Pipeline] sh
++ kubectl set image deployment/aceest-fitness-deployment aceest-fitness=nehaavalur/aceest-fitness:35 --insecure-skip-tls-verify=true -n aceest-fitness
+deployment.apps/aceest-fitness-deployment image updated
++ kubectl rollout status deployment/aceest-fitness-deployment --insecure-skip-tls-verify=true -n aceest-fitness
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "aceest-fitness-deployment" rollout to finish: 1 old replicas are pending termination...
+deployment "aceest-fitness-deployment" successfully rolled out
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Verify Deployment)
+[Pipeline] echo
+Verifying deployment...
+[Pipeline] sh
++ kubectl get pods -l app=aceest-fitness --insecure-skip-tls-verify=true -n aceest-fitness
+NAME                                         READY   STATUS             RESTARTS   AGE
+aceest-fitness-blue-cbf9bfcc7-ctrfh          1/1     Running            0          21h
+aceest-fitness-blue-cbf9bfcc7-kj4hj          1/1     Running            0          21h
+aceest-fitness-blue-cbf9bfcc7-n852r          1/1     Running            0          21h
+aceest-fitness-deployment-57c4cc46bc-2vvgn   1/1     Running            0          52s
+aceest-fitness-deployment-57c4cc46bc-6s7dg   1/1     Running            0          30s
+aceest-fitness-deployment-57c4cc46bc-lt56d   1/1     Running            0          16s
+aceest-fitness-deployment-d77bc9686-87mcn    0/1     Completed          0          3m19s
+aceest-fitness-green-84b44bc7d9-4wpmf        1/1     Running            0          21h
+aceest-fitness-green-84b44bc7d9-9nwfs        1/1     Running            0          21h
+aceest-fitness-green-84b44bc7d9-dqnmn        1/1     Running            0          21h
+aceest-fitness-production-68665d8869-79lbk   1/1     Running            0          20h
+aceest-fitness-production-68665d8869-87sxj   1/1     Running            0          20h
+aceest-fitness-production-68665d8869-lk878   1/1     Running            0          20h
+aceest-fitness-production-747cb98b7-csfgc    0/1     ImagePullBackOff   0          20h
+aceest-fitness-rolling-7798bffbbb-4tlql      1/1     Running            0          20h
+aceest-fitness-rolling-7798bffbbb-528rb      1/1     Running            0          20h
+aceest-fitness-rolling-7798bffbbb-7kzd5      1/1     Running            0          20h
+aceest-fitness-rolling-7798bffbbb-9tmc6      1/1     Running            0          20h
+aceest-fitness-rolling-7798bffbbb-chh84      1/1     Running            0          20h
+aceest-fitness-shadow-5d6474676d-x8fl6       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-6vcgz       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-6wq98       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-bs2qj       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-dd8dk       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-dkdj9       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-fflrp       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-g7449       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-h6bzv       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-pgdcl       1/1     Running            0          20h
+aceest-fitness-stable-54dbf56f85-qxwlx       1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-2q9hv    1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-hhxhp    1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-jgvp7    1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-ntd9r    1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-ppdsk    1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-pqw4l    1/1     Running            0          20h
+aceest-fitness-version-a-5884b6648d-zhct5    1/1     Running            0          20h
+aceest-fitness-version-b-67f6c4dcdf-589vf    1/1     Running            0          20h
+aceest-fitness-version-b-67f6c4dcdf-bljc9    1/1     Running            0          20h
+aceest-fitness-version-b-67f6c4dcdf-r5gnz    1/1     Running            0          20h
++ kubectl get services aceest-fitness-service --insecure-skip-tls-verify=true -n aceest-fitness
+NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+aceest-fitness-service   LoadBalancer   10.108.82.237   <pending>     80:30080/TCP   21h
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Cleaning up...
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] echo
+Pipeline completed successfully!
+[Pipeline] emailext
+Sending email to: fgh30294@gmail.com
+Connection error sending email, retrying once more in 10 seconds...
+Connection error sending email, retrying once more in 10 seconds...
+Failed after second try sending email
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
