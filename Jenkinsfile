@@ -118,8 +118,11 @@ pipeline {
                 sh """
                     kubectl set image deployment/aceest-fitness-deployment \
                         aceest-fitness=${DOCKER_IMAGE}:${DOCKER_TAG} \
-                        --record
-                    kubectl rollout status deployment/aceest-fitness-deployment
+                        --insecure-skip-tls-verify=true \
+                        -n aceest-fitness
+                    kubectl rollout status deployment/aceest-fitness-deployment \
+                        --insecure-skip-tls-verify=true \
+                        -n aceest-fitness
                 """
             }
         }
@@ -128,8 +131,12 @@ pipeline {
             steps {
                 echo 'Verifying deployment...'
                 sh '''
-                    kubectl get pods -l app=aceest-fitness
-                    kubectl get services aceest-fitness-service
+                    kubectl get pods -l app=aceest-fitness \
+                        --insecure-skip-tls-verify=true \
+                        -n aceest-fitness
+                    kubectl get services aceest-fitness-service \
+                        --insecure-skip-tls-verify=true \
+                        -n aceest-fitness
                 '''
             }
         }
@@ -145,7 +152,7 @@ pipeline {
                     <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
                     <p>Docker Image: ${DOCKER_IMAGE}:${DOCKER_TAG}</p>
                 """,
-                to: 'your.email@example.com',
+                to: 'fgh30294@gmail.com',
                 mimeType: 'text/html'
             )
         }
@@ -157,7 +164,7 @@ pipeline {
                     <p>FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
                     <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
                 """,
-                to: 'your.email@example.com',
+                to: 'fgh30294@gmail.com',
                 mimeType: 'text/html'
             )
         }
