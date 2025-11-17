@@ -20,21 +20,17 @@ pipeline {
         
         stage('Environment Setup') {
             steps {
-                echo 'Setting up Python environment...'
+                echo 'Setting up Python virtual environment...'
                 sh '''
                     python3 --version
                     
-                    # Install pip if not present
-                    if ! command -v pip3 &> /dev/null; then
-                        echo "Installing pip..."
-                        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-                        python3 get-pip.py --user
-                        rm get-pip.py
-                    fi
+                    # Create virtual environment
+                    python3 -m venv venv
                     
-                    # Install requirements
-                    python3 -m pip install --user --upgrade pip
-                    python3 -m pip install --user -r requirements.txt
+                    # Activate and install dependencies
+                    . venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
                 '''
             }
         }
@@ -43,8 +39,14 @@ pipeline {
             steps {
                 echo 'Running Pytest unit tests...'
                 sh '''
-                    python3 -m pip install --user pytest pytest-cov pytest-flask
-                    python3 -m pytest --junitxml=test-results.xml --cov=app --cov-report=xml --cov-report=html
+                    # Activate virtual environment
+                    . venv/bin/activate
+                    
+                    # Install test dependencies
+                    pip install pytest pytest-cov pytest-flask
+                    
+                    # Run tests
+                    pytest --junitxml=test-results.xml --cov=app --cov-report=xml --cov-report=html
                 '''
             }
             post {
