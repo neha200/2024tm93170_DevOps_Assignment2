@@ -49,7 +49,7 @@ pipeline {
                 always {
                     junit 'test-results.xml'
                     publishHTML([
-                        allowMissing: false,
+                        allowMissing: true,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
                         reportDir: 'htmlcov',
